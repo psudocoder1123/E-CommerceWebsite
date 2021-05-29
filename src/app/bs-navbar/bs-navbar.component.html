@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark" aria-label="Third navbar example">
+    <div class="container-fluid">
+      <a class="navbar-brand" routerLink="/">O</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExample03">
+        <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+          
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/shopping-cart">
+
+
+              Shopping Cart</a>
+          </li>
+          
+            <li  *ngIf="!LoggedIn" class="nav-item">
+                <a class="nav-link" routerLink="/login">Login</a>
+            </li>
+         
+          
+          <li ngbDropdown *ngIf="LoggedIn" class="nav-item dropdown  abc">
+            <a  ngbDropdownToggle class="nav-link dropdown-toggle"  id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false">{{data.username }}</a>
+            <ul ngbDropdownMenu  class="dropdown-menu" aria-labelledby="dropdown03">
+              <li><a class="dropdown-item" routerLink="/order-sucess">My Orders</a></li>
+              <li *ngIf="isAdmin"><a class="dropdown-item" routerLink="/admin/orders">Manage Orders</a></li>
+              <li *ngIf="isAdmin"><a class="dropdown-item" routerLink="/admin/products">Manage Products</a></li>
+              <li (click)="logoutUser()"><a class="dropdown-item" > Log Out</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>

@@ -1,0 +1,42 @@
+
+<h1>Orders</h1>
+
+<p>
+    Till now you have ordered {{ sucessOrders.length }} Items
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th> Product Name </th>
+            <th>Quantity</th>
+            <th>Name </th>
+            <th>Address</th>
+            <th>Is Delivered</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let s of sucessOrders">
+            <td>
+                <div [style.backgroundImage]="  'url(' + s.image_url + ')' " class="thumbnail"></div>
+            </td>
+            <td>
+               {{ s.product_name }} 
+            </td>
+            <td>
+                {{s.stock}}
+            </td>
+            <td>
+                  {{ s.name}}
+            </td>
+            <td>
+                  {{ s.address1}} {{" "}}  {{s.address2}}
+            </td>
+            <td class="as">
+                  Arriving soon
+            </td>
+        </tr>
+    </tbody>
+</table>

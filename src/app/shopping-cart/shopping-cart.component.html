@@ -1,0 +1,92 @@
+<h1>Shopping Cart</h1>
+<div class="row col-10">
+
+    <p>
+        You have <b>{{products.length }} </b> Items in your shopping Cart
+
+        <button *ngIf="products.length!=0"
+        (click)="clearCart()"
+        style="width: 120px; margin-bottom: 30px;" type="button" class="btn btn-danger btn-sm">Clear Cart
+       </button>
+    </p>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Product </th>
+                <th>Quantity</th>
+                <th> Price </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let p of products">
+                <td>
+                    <div [style.backgroundImage]="  'url(' + p.image_url + ')' " class="thumbnail"></div>
+                </td>
+                <td> {{p.product_name}} </td>  
+                <td> 
+
+                    <div class="w-50">
+                         <!-- Code for Button in this td --> 
+                   <div class="row no-gutters">
+                    <div class="col-2">
+                        <button 
+                        (click)="remove(p.product_id)"
+                        class="btn btn-secondary btn-block">-</button>
+                    </div>
+                
+                    <div class="col text-center ">
+                      {{ p.stock }} in cart
+                    </div>
+                  
+                    <div class="col-2">
+                        <button
+                        (click)="add(p.product_id)"
+                        class="btn btn-secondary btn-block">+</button>
+                    </div>
+                </div>
+                  <!-- Code for Button ends here --> 
+
+                    </div>
+                  
+                </td>
+                <td> {{ p.price * p.stock  | currency: 'USD':true }}  </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th>{{total | currency: 'USD':true }}</th>
+            </tr>
+        </tfoot>
+    </table>
+
+    <div *ngIf="products.length!=0" class="row">
+        <div class="col-sm-4">.
+            
+           
+
+        </div>
+        <div class="col-sm-4">
+            
+            <a
+            (click)="CheckOut()"
+            style="width: 120px; margin-bottom: 30px;" type="button" class="btn btn-success btn-sm">CheckOut
+             </a>
+           
+        </div>
+
+    </div>
+
+
+   
+
+    
+
+    
+</div>
+
